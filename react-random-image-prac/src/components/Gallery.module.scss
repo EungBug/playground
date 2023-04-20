@@ -1,7 +1,38 @@
 .gallery {
-  width: 100%;
-  height: 300px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
+  margin: auto;
+  width: 80%;
+  position: relative;
+
+  .gallery-container {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-auto-rows: 1fr;
+    row-gap: 20px;
+    column-gap: 20px;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  .skeleton-container {
+    width: 100%;
+    display: none;
+    grid-template-columns: repeat(5, 1fr);
+    grid-auto-rows: 1fr;
+    row-gap: 20px;
+    column-gap: 20px;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  .skeleton-container.show {
+    display: grid;
+  }
 }

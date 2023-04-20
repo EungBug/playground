@@ -11,8 +11,8 @@ export default function GalleryImage({ id, url }) {
   }, []);
 
   return (
-    <>
-      <img key={id} src={url} alt="" ref={imgRef} className={styles.gallery__image} />
-    </>
+    <div className={styles.gallery__image}>
+      <img key={id} src={url} alt="" ref={imgRef} />
+    </div>
   );
 }
