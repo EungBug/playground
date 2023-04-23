@@ -1,11 +1,11 @@
 html {
   --color-black: #0e111b;
   --color-white: #fff;
-  --color-whte-50: rgba(255, 255, 255, 0.5);
-  --color-whte-30: rgba(255, 255, 255, 0.3);
-  --color-whte-20: rgba(255, 255, 255, 0.2);
-  --color-whte-10: rgba(255, 255, 255, 0.1);
-  --color-whte-5: rgba(255, 255, 255, 0.05);
+  --color-whte-50: #ffffff80;
+  --color-whte-30: #ffffff4d;
+  --color-whte-20: #fff3;
+  --color-whte-10: #ffffff1a;
+  --color-whte-5: #ffffff0d;
   --color-primary: #fdc000;
   --color-hover: #f86a05;
   --color-area: #1c212e;
@@ -13,16 +13,15 @@ html {
 
 body {
   background-color: var(--color-black);
-  font-family: 'Roboto', sans-serif;
-  line-height: 1.4;
   color: var(--color-white);
+  font-family: Roboto, sans-serif;
+  line-height: 1.4;
 }
 
 .container {
   max-width: 1120px;
   margin: 0 auto;
   padding: 40px 0;
-  /* box-sizing: border-box; */
 }
 
 .headline {
@@ -30,10 +29,10 @@ body {
 }
 
 .headline h1 {
-  font-family: 'Oswald', sans-serif;
+  margin-bottom: 40px;
+  font-family: Oswald, sans-serif;
   font-size: 80px;
   line-height: 1;
-  margin-bottom: 40px;
 }
 
 .headline h1 span {
@@ -43,3 +42,5 @@ body {
 .headline p {
   color: var(--color-whte-30);
 }
+
+/*# sourceMappingURL=index.af20ad6e.css.map */
