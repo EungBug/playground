@@ -4,12 +4,14 @@ const store = new Store({
   searchText: '',
   page: 1,
   pageMax: 1,
-  movies: []
+  movies: [],
+  loading: false
 });
 
 export default store;
 const APIKEY = '7035c60c';
 export const searchMovies = async page => {
+  store.state.loading = true;
   store.state.page = page;
   if (page === 1) {
     store.state.page = 1;
@@ -20,4 +22,5 @@ export const searchMovies = async page => {
   store.state.movies = [...store.state.movies, ...Search];
 
   store.state.pageMax = Math.ceil(Number(totalResults) / 10);
+  store.state.loading = false;
 };

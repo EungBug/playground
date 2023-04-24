@@ -788,11 +788,13 @@ const store = new (0, _eungb.Store)({
     searchText: "",
     page: 1,
     pageMax: 1,
-    movies: []
+    movies: [],
+    loading: false
 });
 exports.default = store;
 const APIKEY = "7035c60c";
 const searchMovies = async (page)=>{
+    store.state.loading = true;
     store.state.page = page;
     if (page === 1) {
         store.state.page = 1;
@@ -805,6 +807,7 @@ const searchMovies = async (page)=>{
         ...Search
     ];
     store.state.pageMax = Math.ceil(Number(totalResults) / 10);
+    store.state.loading = false;
 };
 
 },{"../core/eungb":"kg4lJ","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"8UDl3":[function(require,module,exports) {
@@ -821,6 +824,9 @@ class MovieList extends (0, _eungb.Component) {
         (0, _movieDefault.default).subscribe("movies", ()=>{
             this.render();
         });
+        (0, _movieDefault.default).subscribe("loading", ()=>{
+            this.render();
+        });
     }
     render() {
         this.el.classList.add("movie-list");
@@ -828,11 +834,14 @@ class MovieList extends (0, _eungb.Component) {
       <div class="movies">
 
       </div>
+      <div class="the-loader hide"></div>
     `;
         const moviesEl = this.el.querySelector(".movies");
         moviesEl.append(...(0, _movieDefault.default).state.movies.map((movie)=>new (0, _movieItemDefault.default)({
                 movie
             }).el));
+        const loaderEl = this.el.querySelector(".the-loader");
+        (0, _movieDefault.default).state.loading ? loaderEl.classList.remove("hide") : loaderEl.classList.add("hide");
     }
 }
 exports.default = MovieList;
