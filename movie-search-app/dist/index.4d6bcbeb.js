@@ -697,14 +697,20 @@ parcelHelpers.defineInteropFlag(exports);
 var _eungb = require("../core/eungb");
 var _home = require("./Home");
 var _homeDefault = parcelHelpers.interopDefault(_home);
+var _movie = require("./Movie");
+var _movieDefault = parcelHelpers.interopDefault(_movie);
 exports.default = (0, _eungb.createRouter)([
     {
         path: "#/",
         component: (0, _homeDefault.default)
+    },
+    {
+        path: "#/movie",
+        component: (0, _movieDefault.default)
     }
 ]);
 
-},{"../core/eungb":"kg4lJ","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./Home":"0JSNG"}],"0JSNG":[function(require,module,exports) {
+},{"../core/eungb":"kg4lJ","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./Home":"0JSNG","./Movie":"1LTyN"}],"0JSNG":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _eungb = require("../core/eungb");
@@ -783,12 +789,14 @@ exports.default = Search;
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "searchMovies", ()=>searchMovies);
+parcelHelpers.export(exports, "getMovieDetails", ()=>getMovieDetails);
 var _eungb = require("../core/eungb");
 const store = new (0, _eungb.Store)({
     searchText: "",
     page: 1,
     pageMax: 1,
     movies: [],
+    movie: {},
     loading: false,
     message: "Search for the movie title!"
 });
@@ -816,6 +824,14 @@ const searchMovies = async (page)=>{
     } finally{
         store.state.loading = false;
     }
+};
+const getMovieDetails = async (id)=>{
+    try {
+        const res = await fetch(`https://www.omdbapi.com/?apikey=${APIKEY}&i=${id}&plot=full`);
+        store.state.movie = await res.json();
+    } catch (error) {
+        console.log("getMovieDetails error :", error);
+    } finally{}
 };
 
 },{"../core/eungb":"kg4lJ","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"8UDl3":[function(require,module,exports) {
@@ -907,6 +923,64 @@ class MovieListMore extends (0, _eungb.Component) {
     }
 }
 exports.default = MovieListMore;
+
+},{"../core/eungb":"kg4lJ","../store/movie":"kq1bo","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"1LTyN":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _eungb = require("../core/eungb");
+var _movie = require("../store/movie");
+var _movieDefault = parcelHelpers.interopDefault(_movie);
+class Movie extends (0, _eungb.Component) {
+    async render() {
+        await (0, _movie.getMovieDetails)(history.state.id);
+        console.log((0, _movieDefault.default).state.movie);
+        const { movie  } = (0, _movieDefault.default).state;
+        this.el.classList.add("container", "the-movie");
+        this.el.innerHTML = `
+      <div 
+      style="background-image: url(${movie.Poster})" 
+      class="poster"></div>
+      <div class="specs">
+        <div class="title">
+          ${movie.Title}
+        </div>
+        <div class="labels">
+          <span>${movie.Released}</span>
+          &nbsp;/&nbsp;
+          <span>${movie.Runtime}/</span>
+          &nbsp;/&nbsp;
+          <span>${movie.Country} </span>
+        </div>
+        <div class="plot">
+          ${movie.Plot}
+        </div>
+        <div>
+          <h3>Ratings</h3>
+          ${movie.Ratings.map((rating)=>{
+            return `<p>${rating.Source} - ${rating.Value}</p>`;
+        }).join("")}
+        </div>
+        <div>
+          <h3>Actors</h3>
+          <p>${movie.Actors}</p>
+        </div>
+        <div>
+          <h3>Director</h3>
+          <p>${movie.Director}</p>
+        </div>
+        <div>
+          <h3>Production</h3>
+          <p>${movie.Production}</p>
+        </div>
+        <div>
+          <h3>Genre</h3>
+          <p>${movie.Genre}</p>
+        </div>
+      </div>
+    `;
+    }
+}
+exports.default = Movie;
 
 },{"../core/eungb":"kg4lJ","../store/movie":"kq1bo","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["e11Rl","gLLPy"], "gLLPy", "parcelRequire6017")
 

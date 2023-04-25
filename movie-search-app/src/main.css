@@ -128,6 +128,7 @@ body {
   border-radius: 4px;
   background-color: var(--color-area);
 }
+
 .movie-list .message {
   color: var(--color-primary);
   tab-size: 20px;
@@ -192,4 +193,47 @@ body {
 
 .view-more.hide {
   display: none;
+}
+
+.the-movie {
+  color: var(--color-whte-50);
+  display: flex;
+  gap: 70px;
+}
+
+.the-movie .poster {
+  flex-shrink: 0;
+  --width: 500px;
+  width: var(--width);
+  height: clac(var(--width) * 3 /2);
+  border-radius: 10px;
+  background-size: cover;
+  border-color: var(--color-area);
+}
+
+.the-movie .specs {
+  flex-grow: 1;
+}
+
+.the-movie .title {
+  font-size: 70px;
+  font-family: 'Oswald', sans-serif;
+  line-height: 1;
+  color: var(--color-white);
+  margin-bottom: 30px;
+}
+
+.the-movie .labels {
+  color: var(--color-primary);
+  margin-bottom: 20px;
+}
+
+.the-movie .plot {
+}
+
+.the-movie h3 {
+  font-size: 20px;
+  font-family: 'Oswald', sans-serif;
+  color: var(--color-white);
+  margin: 24px 0 6px;
 }
