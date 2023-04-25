@@ -128,6 +128,11 @@ body {
   border-radius: 4px;
   background-color: var(--color-area);
 }
+.movie-list .message {
+  color: var(--color-primary);
+  tab-size: 20px;
+  text-align: center;
+}
 
 .movie-list .movies {
   display: flex;
