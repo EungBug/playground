@@ -1,11 +1,11 @@
 html {
   --color-black: #0e111b;
   --color-white: #fff;
-  --color-whte-50: #ffffff80;
-  --color-whte-30: #ffffff4d;
-  --color-whte-20: #fff3;
-  --color-whte-10: #ffffff1a;
-  --color-whte-5: #ffffff0d;
+  --color-white-50: #ffffff80;
+  --color-white-30: #ffffff4d;
+  --color-white-20: #fff3;
+  --color-white-10: #ffffff1a;
+  --color-white-5: #ffffff0d;
   --color-primary: #fdc000;
   --color-hover: #f86a05;
   --color-area: #1c212e;
@@ -84,6 +84,20 @@ header .user img {
   width: 100%;
 }
 
+footer {
+  text-align: center;
+  padding: 40px 40px 60px;
+}
+
+footer a {
+  color: var(--color-white-20);
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
 .headline {
   margin-bottom: 40px;
 }
@@ -148,7 +162,7 @@ header .user img {
 }
 
 .skeleton {
-  background-color: var(--area);
+  background-color: var(--color-area);
   border-radius: 10px;
   position: relative;
   overflow: hidden;

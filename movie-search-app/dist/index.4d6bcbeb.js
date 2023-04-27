@@ -572,16 +572,19 @@ parcelHelpers.defineInteropFlag(exports);
 var _eungb = require("./core/eungb");
 var _theHeader = require("./components/TheHeader");
 var _theHeaderDefault = parcelHelpers.interopDefault(_theHeader);
+var _theFooter = require("./components/TheFooter");
+var _theFooterDefault = parcelHelpers.interopDefault(_theFooter);
 class App extends (0, _eungb.Component) {
     render() {
         const theHeader = new (0, _theHeaderDefault.default)().el;
         const routerView = document.createElement("router-view");
-        this.el.append(theHeader, routerView);
+        const theFooter = new (0, _theFooterDefault.default)().el;
+        this.el.append(theHeader, routerView, theFooter);
     }
 }
 exports.default = App;
 
-},{"./core/eungb":"kg4lJ","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./components/TheHeader":"3Cyq4"}],"kg4lJ":[function(require,module,exports) {
+},{"./core/eungb":"kg4lJ","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./components/TheHeader":"3Cyq4","./components/TheFooter":"b3x3c"}],"kg4lJ":[function(require,module,exports) {
 ///// Component /////
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
@@ -751,6 +754,34 @@ class TheHeader extends (0, _eungb.Component) {
     }
 }
 exports.default = TheHeader;
+
+},{"../core/eungb":"kg4lJ","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"b3x3c":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _eungb = require("../core/eungb");
+class TheFooter extends (0, _eungb.Component) {
+    constructor(){
+        super({
+            tagName: "footer"
+        });
+    }
+    render() {
+        this.el.innerHTML = `
+      <div>
+        <a href="https://google.com">
+          GitHub Repository
+        </a>
+      </div>
+      <div>
+      <a href="https://google.com">
+          ${new Date().getFullYear()}
+          EungBug
+        </a>
+      </div>
+    `;
+    }
+}
+exports.default = TheFooter;
 
 },{"../core/eungb":"kg4lJ","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"3L9mC":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
