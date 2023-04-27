@@ -748,7 +748,7 @@ class TheHeader extends (0, _eungb.Component) {
         </ul>
       </nav>
       <a href="#/about" class="user">
-        <img src="https://heropy.blog/css/images/logo.png" alt="User" />
+        <img src="https://avatars.githubusercontent.com/u/108085046?v=4" alt="User" />
       </a>
     `;
     }
@@ -759,6 +759,8 @@ exports.default = TheHeader;
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _eungb = require("../core/eungb");
+var _about = require("../store/about");
+var _aboutDefault = parcelHelpers.interopDefault(_about);
 class TheFooter extends (0, _eungb.Component) {
     constructor(){
         super({
@@ -766,14 +768,15 @@ class TheFooter extends (0, _eungb.Component) {
         });
     }
     render() {
+        const { github , repository  } = (0, _aboutDefault.default).state;
         this.el.innerHTML = `
       <div>
-        <a href="https://google.com">
+        <a href="${repository}">
           GitHub Repository
         </a>
       </div>
       <div>
-      <a href="https://google.com">
+      <a href="${github}">
           ${new Date().getFullYear()}
           EungBug
         </a>
@@ -783,6 +786,19 @@ class TheFooter extends (0, _eungb.Component) {
 }
 exports.default = TheFooter;
 
+},{"../core/eungb":"kg4lJ","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","../store/about":"4RAJO"}],"4RAJO":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _eungb = require("../core/eungb");
+exports.default = new (0, _eungb.Store)({
+    photo: "https://avatars.githubusercontent.com/u/108085046?v=4",
+    name: "EungBug / LeeEunBi",
+    email: "eungb14@gmail.com",
+    blog: "https://eungbug.github.io/",
+    github: "https://github.com/EungBug",
+    repository: "https://github.com/EungBug/playground"
+});
+
 },{"../core/eungb":"kg4lJ","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"3L9mC":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
@@ -791,6 +807,8 @@ var _home = require("./Home");
 var _homeDefault = parcelHelpers.interopDefault(_home);
 var _movie = require("./Movie");
 var _movieDefault = parcelHelpers.interopDefault(_movie);
+var _about = require("./About");
+var _aboutDefault = parcelHelpers.interopDefault(_about);
 exports.default = (0, _eungb.createRouter)([
     {
         path: "#/",
@@ -799,10 +817,14 @@ exports.default = (0, _eungb.createRouter)([
     {
         path: "#/movie",
         component: (0, _movieDefault.default)
+    },
+    {
+        path: "#/about",
+        component: (0, _aboutDefault.default)
     }
 ]);
 
-},{"../core/eungb":"kg4lJ","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./Home":"0JSNG","./Movie":"1LTyN"}],"0JSNG":[function(require,module,exports) {
+},{"../core/eungb":"kg4lJ","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./Home":"0JSNG","./Movie":"1LTyN","./About":"gdB30"}],"0JSNG":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _eungb = require("../core/eungb");
@@ -1083,6 +1105,28 @@ class Movie extends (0, _eungb.Component) {
 }
 exports.default = Movie;
 
-},{"../core/eungb":"kg4lJ","../store/movie":"kq1bo","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["e11Rl","gLLPy"], "gLLPy", "parcelRequire6017")
+},{"../core/eungb":"kg4lJ","../store/movie":"kq1bo","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"gdB30":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _eungb = require("../core/eungb");
+var _about = require("../store/about");
+var _aboutDefault = parcelHelpers.interopDefault(_about);
+class About extends (0, _eungb.Component) {
+    render() {
+        const { photo , name , email , github , blog  } = (0, _aboutDefault.default).state;
+        this.el.classList.add("container", "about");
+        this.el.innerHTML = `
+      <div style="background-image: url(${photo});"
+      class="photo"></div>
+      <p class="name">${name}</p>
+      <p><a href="https://mail.google.com/mail?view=cm&fs=1&to=${email}" target"_blank">${email}</a></p>  
+      <p><a href="${github}" target"_blank">Github</a></p>
+      <p><a href="${blog}" target"_blank">Blog</a></p>
+    `;
+    }
+}
+exports.default = About;
+
+},{"../core/eungb":"kg4lJ","../store/about":"4RAJO","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["e11Rl","gLLPy"], "gLLPy", "parcelRequire6017")
 
 //# sourceMappingURL=index.4d6bcbeb.js.map
